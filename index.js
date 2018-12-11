@@ -18,33 +18,33 @@ module.exports = function AutoPOT(mod) {
 			case 'load':
 			case 'reload':
 				switch(arg2) {
-					case 'hp': hpPot = getHP(); msg(`HP.json has been reloaded.`); break;
-					case 'mp': mpPot = getMP(); msg(`MP.json has been reloaded.`); break;
-					case 'config': config = getConfig(); msg(`Config.json has been reloaded.`); break;
+					case 'hp': hpPot = getHP(); msg(`[HP.json] <font color="#FFF380">重新加載.`); break;
+					case 'mp': mpPot = getMP(); msg(`[MP.json] <font color="#FFF380">重新加載.`); break;
+					case 'config': config = getConfig(); msg(`[設置] <font color="#FFF380">重新加載.`); break;
 				}
 				break;
 			case 'notice':
 				config.notice = !config.notice;
-				msg(`Notice has ${config.notice ? 'Enable' : 'Disable'}.`);
+				msg(`${config.notice ? '<font color="#56B4E9">[開啟]' : '<font color="#E69F00">[關閉]'}`);
 				break;
 			case 'slay':
 			case 'slaying':
 				isSlaying = !isSlaying;
-				msg(`Slaying mode has ${isSlaying ? 'Enable' : 'Disable'}. ${config.hp ? '' : 'HP pot has Enable.'}`);
+				msg(`壓血模式${isSlaying ? '<font color="#56B4E9">[開啟]' : '<font color="#E69F00">[關閉]</font>'} ${config.hp ? '' : 'HP 藥水<font color="#56B4E9">[開啟]'}`);
 				if (!config.hp) config.hp = true;
 				break;
 			case 'hp':
 				config.hp = !config.hp;
-				msg(`HP pot has ${config.hp ? 'Enable' : 'Disable'}. ${isSlaying ? 'Slaying mode has Disable.' : ''}`);
+				msg(`HP 藥水 ${config.hp ? '<font color="#56B4E9">[開啟]' : '<font color="#E69F00">[關閉]'} ${isSlaying ? '壓血模式<font color="#E69F00">[關閉]' : ''}`);
 				if (isSlaying) isSlaying = false;
 				break;
 			case 'mp':
 			case 'mana':
 				config.mp = !config.mp;
-				msg(`MP pot has ${config.mp ? 'Enable' : 'Disable'}.`);
+				msg(`MP 藥水${config.mp ? '<font color="#56B4E9">[開啟]' : '<font color="#E69F00">[關閉]'}`);
 				break;
 			default:
-				msg(`Wrong command :v`);
+				msg(`<font color="#FF0000">指令錯誤</font>`);
 				break;
 		}
 	});
